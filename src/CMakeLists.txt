@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 set($TARGET infinite_matrix)
 
-add_executable(${TARGET} main.cpp)
+add_executable(${TARGET}
+    main.cpp
+    infinite_matrix.h)
 
 set_target_properties(${TARGET} PROPERTIES
     CXX_STANDARD 17
