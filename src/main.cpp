@@ -13,15 +13,20 @@
 
 int main (int, char **)
 {
-    infinite_matrix<int, -1> matrix; // бесконечная матрица int заполнена значениями -1
+    const int default_value = -1;
+    infinite_matrix<int, default_value> matrix; // бесконечная матрица int заполнена значениями -1
     assert(matrix.size() == 0); // все ячейки свободны
 
     auto a = matrix[0][0];
-    assert(a == -1);
-    //assert(matrix.size() == 0);
-    //matrix[100][100] = 314;
-    //assert(matrix[100][100] == 314);
-    //assert(matrix.size() == 1);
+    assert(a == default_value);
+    assert(matrix.size() == 0);
+    matrix[100][100] = 314;
+    assert(matrix[100][100] == 314);
+    assert(matrix.size() == 1);
+
+    matrix[100][100] = default_value;
+    assert(matrix[100][100] == default_value);
+    assert(matrix.size() == 0);
 
 //    // выведется одна строка
 //    // 100100314
