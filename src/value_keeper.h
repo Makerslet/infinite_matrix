@@ -15,8 +15,8 @@ public:
 
     operator T() {
         auto predicate = [this](const typename infinite_matrix<T, def_value>::element& elem) {return elem.first == _row;};
-        auto iter = std::find_if(_matrix._elements.begin(), _matrix._elements.end(), predicate);
-        if(iter == _matrix._elements.end())
+        auto iter = std::find_if(_matrix.elems_begin(), _matrix.elems_end(), predicate);
+        if(iter == _matrix.elems_end())
             return T{def_value};
         else
             return iter->second.get(_column);
@@ -25,22 +25,21 @@ public:
     value_keeper& operator=(const T& value)
     {
         auto predicate = [this](const typename infinite_matrix<T, def_value>::element& elem) {return elem.first == _row;};
-        auto iter = std::find_if(_matrix._elements.begin(), _matrix._elements.end(), predicate);
+        auto iter = std::find_if(_matrix.elems_begin(), _matrix.elems_end(), predicate);
 
-        if(iter == _matrix._elements.end())
+        if(iter == _matrix.elems_end())
         {
             if(value == def_value)
                 return *this;
 
-            auto row = matrix_row<T, def_value>(_row);
-            row.set(_column, value);
-            _matrix._elements.emplace_back(std::make_pair(_row, std::move(row)));
+            auto row = matrix_row<T, def_value>(_row, std::make_pair(_column, value));
+            _matrix.insert_row(std::make_pair(_row, std::move(row)));
         }
         else
         {
             iter->second.set(_column, value);
             if(iter->second.size() == 0)
-                _matrix._elements.erase(iter);
+                _matrix.erase_row(iter);
         }
 
         return *this;

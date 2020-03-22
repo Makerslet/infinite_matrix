@@ -13,6 +13,10 @@ class matrix_row : ISizable
 public:
 
     matrix_row(std::size_t row_number = 0) : _row_number(row_number) {}
+    matrix_row(std::size_t row_number,
+               element&& elem) : _row_number(row_number) {
+        _elements.emplace_back(std::move(elem));
+    }
 
     using elements_iterator = typename std::vector<element>::iterator;
     elements_iterator begin() {

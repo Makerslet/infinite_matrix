@@ -129,6 +129,23 @@ public:
     friend value_keeper<T, def_value>;
 
 private:
+    elements_iterator elems_begin() {
+        return _elements.begin();
+    }
+
+    elements_iterator elems_end() {
+        return _elements.end();
+    }
+
+    void insert_row(element&& row) {
+        _elements.emplace_back(std::move(row));
+    }
+
+    void erase_row(elements_iterator iter) {
+        _elements.erase(iter);
+    }
+
+private:
     std::vector<element> _elements;
     matrix_row<T, def_value> _dummy;
 };
