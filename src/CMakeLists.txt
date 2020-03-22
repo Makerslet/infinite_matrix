@@ -3,7 +3,10 @@ set($TARGET infinite_matrix)
 
 add_executable(${TARGET}
     main.cpp
-    infinite_matrix.h)
+    interfaces.h
+    matrix_row.h
+    infinite_matrix.h
+    value_keeper.h)
 
 set_target_properties(${TARGET} PROPERTIES
     CXX_STANDARD 17
