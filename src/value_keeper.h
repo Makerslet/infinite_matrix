@@ -2,9 +2,13 @@
 #define VALUE_KEEPER_H
 
 #include <cstddef>
+#include <algorithm>
 
 template <typename T, T def_value>
 class infinite_matrix;
+
+template <typename T, T def_value>
+class matrix_row;
 
 template <typename T, T def_value>
 class value_keeper

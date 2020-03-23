@@ -2,6 +2,8 @@
 #define MATRIX_ROW_H
 
 #include "interfaces.h"
+#include "value_keeper.h"
+
 #include <vector>
 #include <algorithm>
 
@@ -31,6 +33,7 @@ public:
         return _elements.size();
     }
 
+private:
     T get(std::size_t column) {
         auto predicate = [column](const element& elem) {return elem.first == column;};
         auto iter = std::find_if(_elements.begin(), _elements.end(), predicate);
@@ -56,26 +59,7 @@ public:
         }
     }
 
-    const T& operator[](std::size_t index) const {
-        return brackets_impl<true>(index);
-    }
-
-    T& operator[](std::size_t index) {
-        return brackets_impl<false>(index);
-    }
-
-private:
-    template<bool is_const>
-    typename std::conditional<is_const, const T&, T&>::type brackets_impl(std::size_t index)
-    {
-        auto predicate = [index](const element& elem) {return elem.first == index;};
-        auto iter = std::find_if(_elements.begin(), _elements.end(), predicate);
-        if(iter != _elements.end())
-            return iter->second;
-        else
-            return T{def_value};
-    }
-
+    friend value_keeper<T, def_value>;
 private:
     std::vector<element> _elements;
     std::size_t _row_number;

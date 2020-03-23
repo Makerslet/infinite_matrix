@@ -28,10 +28,7 @@ int main (int, char **)
     // 100100314
     for(auto c: matrix)
     {
-        int x;
-        int y;
-        int v;
-        std::tie(x, y, v) = c;
+        auto[x, y, v] = c;
         std::cout << x << y << v << std::endl;
     }
     return 0;
