@@ -25,11 +25,11 @@ int main (int, char **)
     assert(matrix.size() == 1);
 
     // выведется одна строка
-    // 100100314
+    // 100 100 314
     for(auto c: matrix)
     {
         auto[x, y, v] = c;
-        std::cout << x << y << v << std::endl;
+        std::cout << x << " " << y << " " << v << std::endl;
     }
     return 0;
 }

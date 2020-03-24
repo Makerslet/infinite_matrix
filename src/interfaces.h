@@ -3,6 +3,9 @@
 
 #include <cstddef>
 
+/**
+ * @brief Интерфейс получения размера
+ */
 struct ISizable
 {
     virtual ~ISizable() = default;
