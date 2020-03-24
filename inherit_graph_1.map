@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$structISizable.html" title="Интерфейс получения размера " alt="" coords="5,46,79,73"/>
+<area shape="rect" id="node2" href="$classinfinite__matrix.html" title="Класс, реализующий бесконечную двумерную матрицу " alt="" coords="129,5,273,47"/>
+<area shape="rect" id="node3" href="$classmatrix__row.html" title="Класс, реализующий строку матрицы " alt="" coords="127,71,275,112"/>
+</map>
